@@ -1,17 +1,51 @@
-.page{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: darkslateblue;
-  padding: 100px;
+body{
+  font-family: arial;
+  
 }
 
-.wrapper2{
-  display: inline-block;
+.input-area{ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  margin: 150px;   
 }
+
+
+.header{
+  margin-top: 20px;
+  background-color: lightblue;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+
+    margin-left: 50px;
+    margin-right: 50px;
+
+    border-radius: 30px;
+
+    border-bottom-width: 5px;
+    border-bottom-style:groove;
+    border-bottom-color: #76a7a6;
+}
+.title-page{
+  text-align: center;
+  background-color:aqua;
+}
+
 
 
 .wrapper {
+  flex: 1;
   --input-focus: #000000;
   --font-color: #000000;
   --bg-color: #ffffff;
@@ -27,6 +61,7 @@
 
 /* switch card */
 .switch { 
+  
   position: relative;
   display: flex;
   flex-direction: column;
@@ -38,12 +73,13 @@
 }
 
 .card-side::before {
+  
   position: absolute;
   content: 'Log in';
   left: -70px;
   top: 0;
   width: 100px;
-  text-decoration: underline;
+  text-decoration:underline;
   font-weight: 600;
 }
 
@@ -64,12 +100,13 @@
 }
 
 .slider {
-  box-sizing: border-box;
+  /*box-sizing: border-box; */
   border-radius: 5px;
   border: 2px solid;
   box-shadow: 4px 4px;
   position: absolute;
   cursor: pointer;
+  display: flex;
   top: 0;
   left: 0;
   right: 0;
@@ -78,29 +115,32 @@
   transition: 0.3s;
 }
 
+
 .slider:before {
   box-sizing: border-box;
   position: absolute;
   content: "";
-  height: 20px;
-  width: 20px;
+  height: 17px;
+  width: 25px;
   border: 2px solid var(--main-color);
-  border-radius: 5px;
-  left: -2px;
-  bottom: 2px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  
   background-color: var(--bg-color);
-  box-shadow: 0 3px 0 var(--main-color);
+  background-color: lightpink;
+  
+  
   transition: 0.3s;
 }
 
 .toggle:checked + .slider {
   background-color:  lightpink;
-
 }
-
 
 .toggle:checked + .slider:before {
   transform: translateX(30px);
+  transform: translateZ(40px);
+  background-color: lightblue;
 }
 
 .toggle:checked ~ .card-side:before {
@@ -115,15 +155,18 @@
 
 .flip-card__inner {
   width: 300px;
-  height: 350px;
-  position: relative;
+  height: 150px;
+  margin-left: 20px;
   background-color: lightblue;
+
     /* width: 100%;
     height: 100%; */
   text-align: center;
-  transition: transform 0.8s;
+  transition: transform 1s;
   transform-style: preserve-3d;
+  
 }
+
 
 .toggle:checked ~ .flip-card__inner {
   transform: rotateY(180deg);
@@ -138,15 +181,15 @@
   position: absolute;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  background: lightgrey;
+  background: rgb(229, 226, 226);
   gap: 20px;
   border-radius: 5px;
+  border-width: 40px;
   border: 2px solid var(--main-color);
-  box-shadow: 4px 4px var(--main-color);
+ 
 }
 
 .flip-card__back {
-  width: 100%;
   transform: rotateY(180deg);
 }
 
@@ -165,13 +208,19 @@
   color: var(--main-color);
 }
 
+
+.g-signin2 {
+  color: white;
+  border-radius: 20px;
+}
+
 .flip-card__input {
   width: 250px;
   height: 40px;
   border-radius: 5px;
   border: 2px solid var(--main-color);
   background-color: var(--bg-color);
-  box-shadow: 4px 4px var(--main-color);
+ 
   font-size: 15px;
   font-weight: 600;
   color: var(--font-color);
@@ -189,7 +238,7 @@
 }
 
 .flip-card__btn:active, .button-confirm:active {
-  box-shadow: 0px 0px var(--main-color);
+  
   transform: translate(3px, 3px);
 }
 
@@ -200,9 +249,9 @@
   border-radius: 5px;
   border: 2px solid var(--main-color);
   background-color: var(--bg-color);
-  box-shadow: 4px 4px var(--main-color);
   font-size: 17px;
   font-weight: 600;
   color: var(--font-color);
   cursor: pointer;
 } 
+

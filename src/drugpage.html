@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="style/drugp.css"/>
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Enter Drug</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+
+    
+    <div class="form-page" id="root">
+      
+      <form class="form" id="addDrugForm">
+        <div class="Name-Quantity">
+
+          <label class="form-labels" for="drugname">Name</label>
+          <label class="form-labels" for="Quantity">Quantity</label>
+          <label  class="form-labels" for="Quantity">Units</label>
+
+          <input class="name-text-box" type="text" id="drugName" name="drugName">
+
+          <input style="width:45px"      class="Quantity" type="number" id="Quantity"  placeholder="00"  maxlength="2"name="Quantity">
+
+          <select class="dropdown2" id="item1" required>
+            <option value="Ounces">Oz.</option>
+            <option value="Miligrams">Mg</option>
+            <option value="Liter">L</option>
+          </select>
+        
+        </div>
+
+        <br>
+        <br>
+
+        <label style="margin: 10px" id="Routine" name="Routine">Routine</label>
+        
+        <div class="checkbox-container">
+            <div class="checkbox-contents">
+              <input id="Sunday-check" class="checkmark" checked="checked" type="checkbox">
+              <label>Su</label>
+            </div>
+
+            <div class="checkbox-contents">
+              <input id="Monday-check" class="checkmark" checked="checked" type="checkbox">
+              <label>M</label>
+            </div>
+
+            <div class="checkbox-contents">
+              <input id="Tuesday-check" class="checkmark" checked="checked" type="checkbox">
+              <label>Tu</label>
+            </div>
+
+            <div class="checkbox-contents">
+              <input id="Wednesday-check" class="checkmark" checked="checked" type="checkbox">
+              <label>W</label>
+            </div>
+
+            <div class="checkbox-contents">
+              <input id="Thursday-check" class="checkmark" checked="checked" type="checkbox">
+              <label>Th</label>
+            </div>
+
+            <div class="checkbox-contents">
+              <input id="Friday-check"  class="checkmark" checked="checked" type="checkbox">
+              <label>F</label>
+            </div>
+
+            <div class="checkbox-contents">
+              <input id="Saturday-check" class="checkmark" checked="checked" type="checkbox">
+              <label>Sa</label>
+            </div>
+            
+          
+        </div>
+      
+        <br>
+        
+        <label style="margin: 10px" id="Time" name="Time" for="Time">Time Taken</label>
+        
+        
+          <div class="clock-input" id="clock">
+           
+            <input type="text" id="timeInput" placeholder="00"  maxlength="2" required >
+            <p>:</p>
+            <input type="text" id="timeInput" placeholder="00"  maxlength="2" required>
+            <p>:</p>
+            
+            <select class="dropdown" id="item1" required>
+              <option value="Morning">A.M</option>
+              <option value="Night">P.M</option>
+            </select>
+
+          </div>
+
+          <div class="Duration-container">
+            <label class="form-labels" for="Duration">Duration</label>
+            <input class="Duration-input"type="number" id="Duration" name="Quantity" placeholder="Total Days Taken">
+          </div>
+          
+        
+
+          <div class="Submit"> <!--Add link to Main Page-->
+            <a class="tag" style = "text-decoration: none" href=""></a>
+            <button class="Submit-button">Submit</button>
+          </div>
+      </form>
+
+
+      
+        <img class="Pillmascot" src="PillMascot.png">
+      
+    </div>
+
+    
+
+  </body>
+</html>
