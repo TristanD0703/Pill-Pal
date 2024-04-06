@@ -1,7 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { initializeDatabase, createAccount, login } from './Database';
+import { onAuthStateChanged, getAuth, signOut } from 'firebase/auth';
 
 function App() {
+  let [user, setUser] = React.useState(null);
+  initializeDatabase();
+
+  login('tdesot3@lsu.edu', '4206969');
+  
+
+  function handleLogout() {
+    signOut(getAuth());
+  }
+
+  onAuthStateChanged(getAuth(), (currUser) => {
+    if(currUser) {
+      setUser(currUser);
+    } else {
+      setUser(null);
+    }
+  });
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +39,11 @@ function App() {
           Learn React
         </a>
       </header>
+      <main>
+        <div style={{backgroundColor: user === null ? 'red' : 'green', width: 500, height: 500}} onClick={handleLogout}>
+
+        </div>
+      </main>
     </div>
   );
 }
