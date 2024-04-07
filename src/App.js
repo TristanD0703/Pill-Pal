@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import { initializeDatabase, createAccount, login, loginGoogle } from './Database';
+import { initializeDatabase, createAccount, loginGoogle, loginEmail } from './Database';
 import { onAuthStateChanged, getAuth, signOut } from 'firebase/auth';
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
         </a>
       </header>
       <main>
-        <div style={{backgroundColor: user === null ? 'red' : 'green', width: 500, height: 500}} onClick={user === null ? loginGoogle : handleLogout}>
+        <div style={{backgroundColor: user === null ? 'red' : 'green', width: 500, height: 500}} onClick={user === null ? createAccount('tdesot3@lsu.edu', '4206969') : handleLogout}>
 
         </div>
       </main>
