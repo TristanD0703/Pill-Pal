@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getDatabase } from 'firebase/database';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { get, getDatabase } from 'firebase/database';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 
 //initializes the database and retuns the app reference (needed for any requests made to firebase)
@@ -35,7 +35,7 @@ export function createAccount(email, password) {
     return user;
 }
 
-export function login(email, password) {
+export function loginEmail(email, password) {
     let user;
     signInWithEmailAndPassword(getAuth(), email, password).then((userCredential) => {
         user = userCredential.user;
@@ -48,6 +48,9 @@ export function login(email, password) {
     return user;
 }
 
-export function logout() {
-    
+export function loginGoogle() {
+    let provider = new GoogleAuthProvider();
+    signInWithPopup(getAuth(), provider).then((result) => {
+        console.log('signed in!');
+    });
 }

@@ -1,15 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import { initializeDatabase, createAccount, login } from './Database';
+import { initializeDatabase, createAccount, login, loginGoogle } from './Database';
 import { onAuthStateChanged, getAuth, signOut } from 'firebase/auth';
 
 function App() {
   let [user, setUser] = React.useState(null);
-  initializeDatabase();
-
-  login('tdesot3@lsu.edu', '4206969');
-  
+  initializeDatabase();  
 
   function handleLogout() {
     signOut(getAuth());
@@ -40,7 +37,7 @@ function App() {
         </a>
       </header>
       <main>
-        <div style={{backgroundColor: user === null ? 'red' : 'green', width: 500, height: 500}} onClick={handleLogout}>
+        <div style={{backgroundColor: user === null ? 'red' : 'green', width: 500, height: 500}} onClick={user === null ? loginGoogle : handleLogout}>
 
         </div>
       </main>
