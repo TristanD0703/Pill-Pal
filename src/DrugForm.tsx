@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { ChangeEvent, useState }  from 'react';
 import './DrugForm.css'; // Assuming your CSS file is renamed to DrugForm.css
 import PillHeart from './HomePageIcons/PillHeart.png'
 import { addDrugToUser } from './Database';
@@ -8,7 +8,15 @@ const DrugForm = () => {
 
  // State variables to store form data
  const [name, setName] = useState('');
- const [daysToTake, setDaysToTake] = useState('');
+ const [daysToTake, setDaysToTake] = useState({
+  sunday: false,
+  monday: false,
+  tuesday: false,
+  wednesday: false,
+  thursday: false,
+  friday: false,
+  saturday: false,
+ });
  const [timeToTake, setTimeToTake] = useState('');
  const [stopDate, setStopDate] = useState('');
  const [dosage, setDosage] = useState('');
@@ -41,7 +49,15 @@ const DrugForm = () => {
  // Function to clear form fields
  const clearForm = () => {
      setName('');
-     setDaysToTake('');
+     setDaysToTake({
+      sunday: false,
+      monday: false,
+      tuesday: false,
+      wednesday: false,
+      thursday: false,
+      friday: false,
+      saturday: false,
+     });
      setTimeToTake('');
      setStopDate('');
      setDosage('');
@@ -77,13 +93,13 @@ const DrugForm = () => {
       
        <div className="checkbox-container">
            <div className="checkbox-contents">
-             <input id="Sunday-check" className="checkmark" type="checkbox" defaultChecked = {true}/>
+             <input id="Sunday-check" className="checkmark" type="checkbox" checked={daysToTake.sunday === true} onChange={(event: ChangeEvent) => setDaysToTake({...daysToTake, sunday: !daysToTake.sunday})}/>
              <label>Su</label>
            </div>
 
 
            <div className="checkbox-contents">
-             <input id="Monday-check" className="checkmark" type="checkbox" defaultChecked = {true}/>
+             <input id="Monday-check" className="checkmark" type="checkbox" checked={daysToTake.monday === true} onChange={(event: ChangeEvent) => setDaysToTake({...daysToTake, monday: !daysToTake.monday})}/>
              <label>M</label>
            </div>
 
@@ -91,13 +107,13 @@ const DrugForm = () => {
 
 
            <div className="checkbox-contents">
-             <input id="Tuesday-check" className="checkmark" type="checkbox" defaultChecked = {true}/>
+             <input id="Tuesday-check" className="checkmark" type="checkbox" checked={daysToTake.tuesday === true} onChange={(event: ChangeEvent) => setDaysToTake({...daysToTake, tuesday: !daysToTake.tuesday})}/>
              <label>Tu</label>
            </div>
 
 
            <div className="checkbox-contents">
-             <input id="Wednesday-check" className="checkmark" type="checkbox" defaultChecked = {true}/>
+             <input id="Wednesday-check" className="checkmark" type="checkbox" checked={daysToTake.wednesday === true} onChange={(event: ChangeEvent) => setDaysToTake({...daysToTake, wednesday: !daysToTake.wednesday})}/>
              <label>W</label>
            </div>
 
@@ -105,7 +121,7 @@ const DrugForm = () => {
 
 
            <div className="checkbox-contents">
-             <input id="Thursday-check" className="checkmark" type="checkbox" defaultChecked = {true}/>
+             <input id="Thursday-check" className="checkmark" type="checkbox" checked={daysToTake.thursday === true} onChange={(event: ChangeEvent) => setDaysToTake({...daysToTake, thursday: !daysToTake.thursday})}/>
              <label>Th</label>
            </div>
 
@@ -113,7 +129,7 @@ const DrugForm = () => {
 
 
            <div className="checkbox-contents">
-             <input id="Friday-check" className="checkmark" type="checkbox" defaultChecked = {true}/>
+             <input id="Friday-check" className="checkmark" type="checkbox" checked={daysToTake.friday === true} onChange={(event: ChangeEvent) => setDaysToTake({...daysToTake, friday: !daysToTake.friday})}/>
              <label>F</label>
            </div>
 
@@ -121,7 +137,7 @@ const DrugForm = () => {
 
 
            <div className="checkbox-contents">
-             <input id="Saturday-check" className="checkmark" type="checkbox" defaultChecked = {true}/>
+             <input id="Saturday-check" className="checkmark" type="checkbox" checked={daysToTake.saturday === true} onChange={(event: ChangeEvent) => setDaysToTake({...daysToTake, saturday: !daysToTake.saturday})}/>
              <label>Sa</label>
            </div>
 
@@ -156,7 +172,7 @@ const DrugForm = () => {
       
 
 
-       <button type="submit" onClick ={handleSubmit}>
+       <button type="submit" onChange ={handleSubmit}>
          Submit
        </button>
 

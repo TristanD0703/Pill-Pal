@@ -77,7 +77,7 @@ export function createUserData(userID) {
 
 //creates a drug record in the database, then adds a reference to that drug in the user's drug list.
 export function addDrugToUser(userID, name, daysToTake, timeToTake, stopDate, dosage, dosageUnit) {
-    const db = getDatabase();
+    const rootRef = ref(getDatabase());
     const newDrug = {
         name: name,
         daysToTake: daysToTake,
@@ -88,7 +88,7 @@ export function addDrugToUser(userID, name, daysToTake, timeToTake, stopDate, do
         daysTaken: {}
     }
 
-    const drugID = push(child(db, `users/${userID}/drugsList`), newDrug)
+    const drugID = push(child(rootRef, `users/${userID}/drugsList`), newDrug)
 }
 
 export function getDrugList(userID) {
