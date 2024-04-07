@@ -1,0 +1,118 @@
+.form-page{
+    
+    margin: 0;
+    margin-top: 150px;
+    padding: 40px;
+    border-radius: 4px;
+    background-color:  #d4d2cc;
+    
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    box-shadow: 10px 5px 5px rgb(190, 176, 176);
+    transition: 0.3s;
+}
+
+.form-page:hover{
+    padding: 0px 60px 0px 60px;
+   
+}
+.title{
+  margin: 20px 0 20px 0;
+  font-size: 25px;
+  font-weight: 900;
+  text-align: center;
+  color: var(--main-color);
+}
+
+.signin-form{
+   display: grid;
+   align-items: center;
+
+}
+
+.Users-date{
+    display: grid;
+    margin-right: 100px;
+    margin-bottom: 70px;
+}
+
+.Enter-button{
+    text-align: center;
+    
+    margin: 20px 0 20px 0;
+    width: 300px;
+    height: 40px;
+    border-radius: 4px;
+    border: 2px solid var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+   
+    box-shadow: 3px 2px rgb(203, 197, 197);
+}
+
+
+.Enter-button:active, .button-confirm:active {
+    transform: translate(3px, 3px);
+  }
+
+
+.header{
+    margin-top: 20px;
+    background-color:#92C7CF;
+      height: 65px;
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      justify-content: center;
+  
+      text-align: center;
+      position: fixed;
+      z-index: 100;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+  
+      margin-left: 50px;
+      margin-right: 50px;
+  
+      border-radius: 30px;
+  
+      border-bottom-width: 5px;
+      border-bottom-style:inset;
+      border-bottom-color:#AAD7D9;
+      transition: 0.2s;
+  }
+  
+  .header:hover{
+    margin: 20px;
+  }
+
+select{
+    border-radius: 4px;
+    border:none;
+    box-shadow: 2px 2px 2px;
+}
+
+body{
+    font-family: arial,sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+   
+}
+
+input{
+    border-radius: 4px;
+    border-color: rgb(173, 216, 230, 0.853);
+    
+    border: none;
+    padding: 10px;
+}
+
+
+
+
+
