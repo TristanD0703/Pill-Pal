@@ -9,6 +9,8 @@ import flag from "./HomePageIcons/flag.svg";
 import { getAuth } from 'firebase/auth';
 
 import DrugForm from "./DrugForm.tsx";
+import { child, getDatabase, onValue, ref } from "firebase/database";
+import { takeDrug } from "./Database.js";
 
 const CircleLayout = ({ children, characterImageUrl }) => {
   const itemCount = React.Children.count(children);
@@ -95,36 +97,33 @@ const Modal = ({ isOpen, onClose, children }) => {
 };
 
 const CheckinDropdown = ({ items }) => {
-  const [checkedItems, setCheckedItems] = useState({});
+  const [checkedItems, setCheckedItems] = useState([] as number[]);
 
   const handleCheckboxChange = (event) => {
-    setCheckedItems({
-      ...checkedItems,
-      [event.target.id]: event.target.checked,
-    });
+    console.log(event.target.parentElement);
+    console.log(items[event.target.parentElement.id].name);
+    takeDrug(getAuth().currentUser?.uid, items[event.target.parentElement.id].drugID);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    firebase
-      .database()
-      .ref("path/to/your/data")
-      .set(checkedItems)
-      .then(() => console.log("Data sent to Firebase"))
-      .catch((error) => console.error(error));
+    Object.values(checkedItems).forEach(element => {
+      takeDrug(getAuth().currentUser?.uid, element);
+    });
+    
   };
 
   return (
     <div className=" bg-white border border-gray-200 rounded shadow-md mt-2 w-full">
       <form onSubmit={handleSubmit}>
         {items.map((item, index) => (
-          <div key={index}>
+          <div key={index} id={index}>
             <input
               type="checkbox"
               id={`checkbox-${index}`}
               onChange={handleCheckboxChange}
             />
-            <label htmlFor={`checkbox-${index}`}>{item}</label>
+            <label htmlFor={`checkbox-${index}`}>{item.name}</label>
             <br />
           </div>
         ))}
@@ -190,11 +189,25 @@ const ProgressBarHolder = () => {
 function HomePage() {
   const [isCheckinModalOpen, setIsCheckinModalOpen] = useState(false);
   const [isPillFormModalOpen, setIsPillFormModalOpen] = useState(false);
+  const [drugList, setDrugList] = useState([{}]);
+  
+
+  const rootRef = ref(getDatabase());
+
+  onValue(child(rootRef, `users/${getAuth().currentUser?.uid}/drugsList`), (data) =>{
+    if(data.exists()) {
+      const drugs = Object.values(data.val()) as {}[];
+      setDrugList(drugs);
+    }
+  }, {
+    onlyOnce: true
+  })
 
   const openCheckinModal = () => setIsCheckinModalOpen(true);
   const closeCheckinModal = () => setIsCheckinModalOpen(false);
   const openPillFormModal = () => setIsPillFormModalOpen(true);
   const closePillFormModal = () => setIsPillFormModalOpen(false);
+  
 
   return (
     <div className ="">
@@ -236,8 +249,9 @@ function HomePage() {
       </Modal>
       
       <Modal isOpen={isCheckinModalOpen} onClose={closeCheckinModal}>
-        <CheckinDropdown items={["Item 1", "Item 2", "Item 3"]} />
+        <CheckinDropdown items={drugList} />
       </Modal>
+      <button onClick={(e) => getAuth().signOut}/>
     </div>
   );
 }
