@@ -13,6 +13,7 @@ const DrugForm = () => {
  const [stopDate, setStopDate] = useState('');
  const [dosage, setDosage] = useState('');
  const [dosageUnit, setDosageUnit] = useState('');
+ 
 
  // Function to handle form submission
  const handleSubmit = async (event) => {
@@ -65,11 +66,11 @@ const DrugForm = () => {
 
 
          <input style={{width: "45px" }}     className="Quantity" type="number" id="Quantity"  placeholder="00"  maxLength={2} name="Quantity" />
-         <select className="dropdown2" id="item1" required>
+         <select className="dropdown2" id="item1" required onChange={(e) => setDosageUnit(e.target.value)}>
            <option value="Ounces">Oz.</option>
            <option value="Miligrams">Mg</option>
            <option value="Liter">L</option>
-         </select>
+         </select >
    </div>
    <br/>
    <label style={{margin: "10px"}} id="Routine">Routine</label>
@@ -135,9 +136,7 @@ const DrugForm = () => {
       
          <div className="clock-input" id="clock">
          
-           <input type="text" id="timeInput" placeholder="00"  maxLength={2} required/>
-           <p>:</p>
-           <input type="text" id="timeInput" placeholder="00"  maxLength={2} required/>
+           <input style={{width: "75px" }} type="text" id="timeInput" placeholder="00:00"  maxLength={5} required onChange={(e) => setTimeToTake(e.target.value)}/>
            <p>:</p>
           
            <select className="dropdown" id="item1" required>
@@ -151,13 +150,13 @@ const DrugForm = () => {
 
          <div className="Duration-container">
            <label className="form-labels" htmlFor="Duration">Duration</label>
-           <input className="Duration-input"type="number" id="Duration" name="Quantity" placeholder="Total Days"/>
+           <input className="Duration-input"type="number" id="Duration" name="Quantity" placeholder="Total Days" onChange={(e) => setTimeToTake(e.target.value)}/>
          </div>
         
       
 
 
-       <button type="submit" className="Submit">
+       <button type="submit" onClick ={handleSubmit}>
          Submit
        </button>
 

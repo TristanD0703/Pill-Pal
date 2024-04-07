@@ -6,6 +6,7 @@ import stats from "./HomePageIcons/stats.svg";
 import calendar from "./HomePageIcons/calender.svg";
 import mascot from "./HomePageIcons/idle.gif";
 import flag from "./HomePageIcons/flag.svg";
+import { getAuth } from 'firebase/auth';
 
 import DrugForm from "./DrugForm.tsx";
 
@@ -201,7 +202,7 @@ function HomePage() {
         Pill Pal
       </h1>
       <h1 className=" m-4 top-0 absolute right-0 text-6xl font-bold text-gray-800">
-        Username
+        {getAuth().currentUser?.email}
       </h1>
       <div>
         <CircleLayout characterImageUrl={mascot}>
